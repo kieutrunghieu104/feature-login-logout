@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 import useDashboardMe from "../hooks/useDashboard";
 import ROUTE_PATHS from "~/app/router/routePaths";
-import { logoutService } from "~/features/auth/services/authService";
 import useLogout from "~/features/auth/hooks/useLogout";
 
 function DashboardPage() {

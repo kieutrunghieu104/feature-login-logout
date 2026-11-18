@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { InfoCircleOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Radio, Tag } from 'antd';
 
 const customizeRequiredMark = (label, { required }) => (
@@ -32,12 +31,17 @@ function NotFoundPage() {
             <Radio.Button value="customize">Customize</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Field A" required tooltip="This is a required field">
+        <Form.Item
+          label="Field A"
+          required
+          rules={[
+            { required: true }
+          ]}
+        >
           <Input placeholder="input placeholder" />
         </Form.Item>
         <Form.Item
           label="Field B"
-          tooltip={{ title: 'Tooltip with customize icon', icon: <InfoCircleOutlined /> }}
         >
           <Input placeholder="input placeholder" />
         </Form.Item>
@@ -45,7 +49,7 @@ function NotFoundPage() {
           <Button type="primary">Submit</Button>
         </Form.Item>
       </Form>
-    </div>
+    </div >
   );
 }
 
