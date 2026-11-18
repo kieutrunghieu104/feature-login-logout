@@ -1,7 +1,7 @@
 const ROUTE_PATHS = {
   root: "/",
   login: "/login",
-  dashboard: "dashboard",
+  dashboard: "/dashboard",
   notFound: "*",
 }
 

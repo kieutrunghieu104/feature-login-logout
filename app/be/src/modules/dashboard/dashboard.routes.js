@@ -1,11 +1,12 @@
 import { Router } from "express";
-import validationRequest from "../../middlewares/validateRequest.js";
-import { getUserByIdSchema } from "./dashboard.validation.js";
+
 import { getUserByIdController } from "./dashboard.controller.js";
+
+import authenticate from "../../middlewares/authenticate.js";
 
 const router = Router();
 router
-  .route("/:id")
-  .get(validationRequest(getUserByIdSchema), getUserByIdController);
+  .route("/me")
+  .get(authenticate, getUserByIdController);
 
 export default router;

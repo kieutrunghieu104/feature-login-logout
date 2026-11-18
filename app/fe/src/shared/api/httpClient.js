@@ -1,5 +1,7 @@
 import axios from "axios";
+
 import env from "~/config/env";
+import setupInterceptors from "./interceptors";
 
 const httpClient = axios.create({
   baseURL: env.VITE_API_URL,
@@ -7,5 +9,7 @@ const httpClient = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true,
 });
+setupInterceptors(httpClient);
 export default httpClient;

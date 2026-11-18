@@ -1,5 +1,5 @@
-import { ConfigProvider } from 'antd';
-import viVN from "antd/locale/vi_VN";
+import { ConfigProvider, App as AntdApp } from 'antd';
+// import viVN from "antd/locale/vi_VN";
 
 const AntdProvider = ({ children }) => {
   return (
@@ -12,14 +12,27 @@ const AntdProvider = ({ children }) => {
         components: {
           Button: {
             borderRadius: 4
-          }
+          },
         }
       }}
-      locale={viVN}
+      // locale={viVN}
       componentSize="middle"
     >
-      {children}
-    </ConfigProvider>
+      <AntdApp
+        message={{
+          maxCount: 3,
+          top: 24,
+          duration: 1,
+        }}
+
+        notification={{
+          duration: 3,
+          placement: "topRight"
+        }}
+      >
+        {children}
+      </AntdApp>
+    </ConfigProvider >
   );
 };
 export default AntdProvider;

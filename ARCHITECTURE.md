@@ -50,7 +50,7 @@ code_base/
             ├── config/                   # Frontend configuration
             │   └── env.js                # Client-side environment variables
             ├── app/                      # Application-level architecture
-            │   ├── contexts/             # Global contexts (AuthProvider.js, ...)
+            │   ├── contexts/             # Global contexts (AuthContext.js, ...)
             │   ├── layouts/              # Layout wrappers (DefaultLayout, AuthLayout, ...)
             │   ├── providers/            # Consolidated providers wrapper (AppProvider.js)
             │   └── router/               # Route definitions & router setup (AppRouter, routePaths, routes)

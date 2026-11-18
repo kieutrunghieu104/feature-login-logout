@@ -27,6 +27,22 @@ const userSchema = new mongoose.Schema({
       },
     ],
   },
+  role: {
+    type: String,
+    required: [true, "Role là bắt buộc"],
+    default: "user",
+    enum: {
+      values: ["admin", "user"],
+      message: "Role không hợp lệ",
+    },
+  },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
+}, {
+  timestamps: true,
+  versionKey: false,
 });
 userSchema.index({ email: 1 }, { unique: true });
 const User = mongoose.model("User", userSchema);
