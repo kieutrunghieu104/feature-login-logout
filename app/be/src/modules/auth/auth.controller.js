@@ -2,6 +2,7 @@ import ms from "ms";
 import {
   loginService,
   logoutService,
+  refreshTokenService,
 } from "./auth.service.js";
 import env from "../../config/env.js";
 
@@ -31,7 +32,25 @@ const logoutController = async (req, res) => {
   })
 };
 
+const refreshTokenController = async (req, res) => {
+  const result = await refreshTokenService(req.cookies?.refreshToken);
+  res.cookie("refreshToken", result.refreshToken, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+    maxAge: ms(env.EXPIRES_REFRESH_TOKEN),
+  });
+  return res.status(200).json({
+    success: true,
+    message: "Làm mới Access Token thành công",
+    date: {
+      accessToken: result.accessToken,
+    },
+  });
+};
+
 export {
   loginController,
   logoutController,
+  refreshTokenController,
 }

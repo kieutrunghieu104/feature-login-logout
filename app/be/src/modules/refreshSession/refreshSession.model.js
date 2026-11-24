@@ -25,6 +25,7 @@ const refreshSessionSchema = new mongoose.Schema({
 }, {
   timestamps: true,
   versionKey: false,
+  strict: "throw"
 });
 
 refreshSessionSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
