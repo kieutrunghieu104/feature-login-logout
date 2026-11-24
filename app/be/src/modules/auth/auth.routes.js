@@ -6,6 +6,6 @@ import { loginController, logoutController } from "../auth/auth.controller.js";
 const router = Router();
 
 router.post("/login", validationRequest(loginSchema), loginController);
-router.delete("/logout", logoutController);
+router.post("/logout", logoutController);
 
 export default router;
