@@ -40,7 +40,6 @@ const logoutService = async refreshToken => {
   const result = await RefreshSession.findOne({
     userId: decoded.sub,
     tokenHash: hashData(refreshToken),
-    revokeAt: null,
   }).select("familyId").lean().exec();
   if (!result) return;
   await RefreshSession.updateMany({
@@ -60,7 +59,6 @@ const refreshTokenService = async refreshToken => {
   const result = await RefreshSession.findOne({
     userId: decoded.sub,
     tokenHash: hashData(refreshToken),
-    revokeAt: null,
   }).select("familyId").lean().exec();
   if (!result) throw new AppError("Refresh Token không tồn tại hoặc đã bị thu hồi", 401);
   const currentSession = await RefreshSession.findOneAndUpdate({
