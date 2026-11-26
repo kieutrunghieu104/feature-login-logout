@@ -12,4 +12,10 @@ const httpClient = axios.create({
   withCredentials: true,
 });
 setupInterceptors(httpClient);
+
+const refreshTokenAPI = () => httpClient.post("/refresh-token");
+
+export {
+  refreshTokenAPI,
+}
 export default httpClient;

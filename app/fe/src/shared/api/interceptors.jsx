@@ -1,5 +1,3 @@
-
-
 const setupInterceptors = (httpClient) => {
   httpClient.interceptors.request.use(
     config => {
@@ -17,6 +15,10 @@ const setupInterceptors = (httpClient) => {
       return response.data
     },
     error => {
+      if (error.response?.status === 401) {
+        localStorage.removeItem("accessToken");
+        location.href = "/login";
+      }
       if (error.response) {
         return Promise.reject(error.response.data);
       }
